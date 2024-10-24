@@ -2,10 +2,10 @@ import pandas as pd
 import matplotlib.pyplot as plt
 import seaborn as sns
 
-# Project Requirement 1: Load the dataset
+#Load the dataset
 df = pd.read_csv('AirPassengers.csv')
 
-# Project Requirement 2: Display basic information about the dataset
+# Display basic information about the dataset
 print("First 5 rows of the dataset:")
 print(df.head())
 
@@ -15,7 +15,7 @@ print(df.info())
 print("\nSummary Statistics:")
 print(df.describe())
 
-# Project Requirement 3: Data Cleaning
+#Data Cleaning
 print("\nMissing Values in each column:")
 print(df.isnull().sum())  # Checking for missing values
 
@@ -33,13 +33,13 @@ df_cleaned = df_cleaned.drop_duplicates()
 print("\nData Types of each column:")
 print(df_cleaned.dtypes)
 
-# Project Requirement 4: Convert the 'Month' column to datetime
+#Convert the 'Month' column to datetime
 df_cleaned['Month'] = pd.to_datetime(df_cleaned['Month'])
 
-# Project Requirement 5: Create a new column for 'Year'
+# Create a new column for 'Year'
 df_cleaned['Year'] = df_cleaned['Month'].dt.year
 
-# Project Requirement 6: Visualizing the trend over time (line plot with styling)
+# Visualizing the trend over time (line plot with styling)
 plt.figure(figsize=(12, 6))
 plt.plot(df_cleaned['Month'], df_cleaned['#Passengers'], marker='o', color='teal', linestyle='-', linewidth=2, markersize=5, label='Passengers')
 plt.title('Number of Passengers Over Time', fontsize=16, fontweight='bold')
@@ -51,7 +51,7 @@ plt.legend(loc='upper left', fontsize=12)
 plt.tight_layout()
 plt.show()
 
-# Project Requirement 7: Visualizing total passengers per year (styled bar plot)
+# Visualizing total passengers per year (styled bar plot)
 passengers_per_year = df_cleaned.groupby('Year')['#Passengers'].sum()
 
 plt.figure(figsize=(10, 6))
@@ -64,7 +64,7 @@ plt.grid(True, axis='y', linestyle='--', linewidth=0.5)
 plt.tight_layout()
 plt.show()
 
-# Project Requirement 8: Moving average (12 months) with improved styling
+# Moving average (12 months) with improved styling
 df_cleaned['Moving_Avg'] = df_cleaned['#Passengers'].rolling(window=12).mean()
 
 plt.figure(figsize=(12, 6))
@@ -79,7 +79,7 @@ plt.grid(True, which='both', linestyle='--', linewidth=0.5)
 plt.tight_layout()
 plt.show()
 
-# Project Requirement 9: Reporting findings
+# Reporting findings
 print("\n### Findings Summary ###")
 print("- The dataset contains monthly data on airline passengers between 1949 and 1960.")
 print("- No missing values or duplicates were found in the dataset after cleaning.")
